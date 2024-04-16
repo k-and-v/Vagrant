@@ -1,0 +1,7 @@
+# ignore files
+# .gitignore
+*.log
+
+# ignore ALL files in directory
+.git
+temp/
