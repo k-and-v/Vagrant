@@ -1,0 +1,34 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Requires installed version of Vagrant:
+Vagrant.require_version ">= 2.4.0"                        # Optional parameter, don't have to set it.
+
+Vagrant.configure("2") do |config|
+  # You can search boxes at https://vagrantcloud.com/search.
+  # Select box of the VM:
+  config.vm.box =              "bento/ubuntu-22.04"
+  # Box version requared:
+  config.vm.box_version =      ">= 202401.31.0"           # Optional parameter, don't have to set it.
+  config.vm.box_check_update = false                      # Optional parameter, don't have to set it.
+
+  # Doc's for VirtualBox provider https://developer.hashicorp.com/vagrant/docs/providers/virtualbox
+  config.vm.provider "virtualbox" do |vbox| 
+    # Display the VirtualBox GUI when booting the machine
+    vbox.gui =    false                                   # Optional parameter, don't have to set it.
+    # Customize the name on the VM:
+    vbox.name =   "vUbuntu22"                             # Optional parameter, don't have to set it.
+    # Customize the amount of CPU on the VM:
+    vbox.cpus =   "2"                                     # Optional parameter, don't have to set it.
+    # Customize the amount of memory on the VM:
+    vbox.memory = "2048"                                  # Optional parameter, don't have to set it.
+    # Check the guest additions:
+    vbox.check_guest_additions = true                     # Optional parameter, don't have to set it.
+  end
+
+  config.vm.provision "shell", inline: <<-SHELL
+    sudo apt-get update
+    # sudo apt-get upgrade -y
+  SHELL
+
+end

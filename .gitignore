@@ -1,7 +1,8 @@
 # ignore files
-# .gitignore
+.gitignore
 *.log
 
 # ignore ALL files in directory
 .git
 temp/
+.vagrant/
